@@ -1,0 +1,19 @@
+import plotly.express as px
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+iris = px.data.iris()
+attribute = 'petal_width'
+stat_description = iris[attribute].describe()
+print(f"Statistical Description for the attribute '{attribute}':")
+print(stat_description)
+plt.figure(figsize=(10, 6))
+plt.subplot(1, 2, 1)
+sns.boxplot(x=iris[attribute])
+plt.title(f'Box Plot of {attribute}')
+plt.subplot(1, 2, 2)
+sns.kdeplot(iris[attribute], fill=True)
+plt.title(f'Dependency Curve of {attribute}')
+plt.xlabel(attribute)
+plt.tight_layout()
+plt.show()
