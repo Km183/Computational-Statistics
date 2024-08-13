@@ -1,0 +1,14 @@
+import plotly.express as px
+import pandas as pd
+df = px.data.iris()
+print("Total Number of Records:", df.shape)
+numerical_attributes = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width']
+for attribute in numerical_attributes:
+fig = px.histogram(df, x=attribute, nbins=50)
+fig.update_layout(title=f"Histogram of {attribute}", xaxis_title=attribute, yaxis_title="Frequency")
+fig.show()
+print("Attribute Name\tMean\tStandard Deviation")
+for attribute in numerical_attributes:
+mean = df[attribute].mean()
+sd = df[attribute].std()
+print(f"{attribute.capitalize()}\t{mean:.6f}\t{sd:.5f}")
